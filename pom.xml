@@ -6,9 +6,25 @@
 	<name>testprojectjunit</name>
 	<properties>
 		<aspectj.version>1.8.10</aspectj.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+<dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>rest-assured</artifactId>
+    <version>4.3.0</version>
+    <scope>test</scope>
+</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20200518</version>
+</dependency>
+		
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>cucumber-reporting</artifactId>
@@ -33,7 +49,7 @@
 			<version>4.13</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+ 		<dependency>
 			<groupId>io.qameta.allure</groupId>
 			<artifactId>allure-cucumber4-jvm</artifactId>
 			<version>2.13.3</version>
@@ -46,6 +62,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M5</version>
 				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
 					<systemPropertyVariables>
 						<allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
 						<allure.link.issue.pattern>https://example.org/browse/{}</allure.link.issue.pattern>
@@ -68,32 +85,8 @@
 				<artifactId>allure-maven</artifactId>
 				<version>2.8</version>
 				<configuration>
-    				<reportVersion>2.7.0</reportVersion>
+					<reportVersion>2.7.0</reportVersion>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>net.masterthought</groupId>
-				<artifactId>maven-cucumber-reporting</artifactId>
-				<version>5.3.0</version>
-				<executions>
-					<execution>
-						<id>execution</id>
-						<phase>test</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<projectName>testprojectjunit</projectName>
-							<outputDirectory>target/site</outputDirectory>
-							<inputDirectory>target/cucumber</inputDirectory>
-							<jsonFiles>
-								<jsonFile>**/*.json</jsonFile>
-							</jsonFiles>
-							<skippedFails>true</skippedFails>
-							<enableFlashCharts>false</enableFlashCharts>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
