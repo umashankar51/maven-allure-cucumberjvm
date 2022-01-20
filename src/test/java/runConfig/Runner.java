@@ -7,12 +7,12 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/resources/features/CreateOrder", 
+		features = {"src/test/resources/features/CreateOrder", "src/test/resources/features/TestFeature"},
 		glue = {"stepdefinitions"},
 		plugin = {"json:target/cucumber/cucumber.json",
-				  "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"}
-		 //tags="@TestType1"
+				  "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"},
+				tags = {"@TestType1"}
 )
-public class RunTest {
+public class Runner {
 
 }

@@ -1,6 +1,7 @@
 Feature: FO1
 
 @ISSUE=GAT-1
+  @TestType1
 Scenario Outline: Test3 <Store>
 Then I have a performed ThenTest for <Store>
 
